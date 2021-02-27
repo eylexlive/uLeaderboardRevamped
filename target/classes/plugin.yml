@@ -1,0 +1,11 @@
+name: uLeaderboards
+author: Umut Erarslan
+version: 2.2.4
+main: io.github.eylexlive.leaderboards.uLeaderboards
+depend: [PlaceholderAPI]
+softdepend: [Citizens, HolographicDisplays]
+commands:
+  leaderboard:
+    aliases:
+      - lb
+      - ulb

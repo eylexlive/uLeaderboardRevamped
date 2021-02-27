@@ -1,0 +1,28 @@
+# uLeaderboards | Advanced leaderboard plugin!
+
+# made by M & A
+# author: Umut Erarslan#8378
+
+# Your license key
+license: ' '
+
+# Database settings, if set to false, SQLite is used.
+mysql:
+  enabled: false
+  host: localhost
+  port: 3306
+  database: uleaderboards
+  username: root
+  password: 1234
+  use-ssl: false
+  table-prefix: leaderboards_
+
+# Leaderboard renew time (Minutes)
+auto-leaderboard-reload-delay: 30 # every 30 minutes
+
+# Position message
+position-msg:
+  - ''
+  - '&aYour position in the leaderboard'
+  - '    &f&l#{pos}    '
+  - ''

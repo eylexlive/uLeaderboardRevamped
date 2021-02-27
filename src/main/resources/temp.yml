@@ -1,0 +1,57 @@
+placeholder: PLACEHOLDER
+limit: 10
+
+holoLines:
+  - ' &7plugins/uLeaderboards/leaderboards/....yml '
+  - ' &7dosyasından düzenlenebilir.'
+  - ''
+  - '&b... Sıralaması'
+  - ''
+  - ' &7... sıralamasında yer '
+  - ' &7alabilmek için ... '
+  - ''
+  - '&8▸ &e#1 &f{lb_1}: &e{lb_1_value} &e...'
+  - '&8▸ &e#2 &f{lb_2}: &e{lb_2_value} &e...'
+  - '&8▸ &e#3 &f{lb_3}: &e{lb_3_value} &e...'
+  - '&8▸ &e#4 &f{lb_4}: &e{lb_4_value} &e...'
+  - '&8▸ &e#5 &f{lb_5}: &e{lb_5_value} &e...'
+
+npcHoloLines:
+  - '&8▸ &e#{lb_index}'
+  - '&8▸ &f{lb_player}'
+  - '&8▸ &e{lb_value} ...'
+
+signLines:
+  - '&8&m-----&a&l#{lb_index}&8&m-----'
+  - '&f{lb_player}'
+  - '&e{lb_value} ...'
+  - '&8&m-----------------------------'
+
+bookPages:
+  - ' &7plugins/uLeaderboards/leaderboards/....yml %n&7dosyasından düzenlenebilir.'
+  - ' %n    &2... Sıralaması %n %n &8... sıralamasında yer %n &8alabilmek
+    için ... %n %n   &8▸ &6#1 &7▸ &3{lb_1}: &8{lb_1_value} %n   &8▸ &6#2
+    &7▸ &3{lb_2}: &8{lb_2_value} %n   &8▸ &6#3 &7▸ &3{lb_3}: &8{lb_3_value} %n   &8▸
+    &6#4 &7▸ &3{lb_4}: &8{lb_4_value} %n   &8▸ &6#5 &7▸ &3{lb_5}: &8{lb_5_value}
+    %n %n   &8Senin sıralaman: &8&l#{pos}   '
+  - ' %n   &8▸ &6#6 &7▸ &3{lb_6}: &8{lb_6_value} %n   &8▸ &6#7 &7▸ &3{lb_7}: &8{lb_7_value}
+    %n   &8▸ &6#8 &7▸ &3{lb_8}: &8{lb_8_value} %n   &8▸ &6#9 &7▸ &3{lb_9}: &8{lb_9_value}
+    %n   &8▸ &6#10 &7▸ &3{lb_10}: &8{lb_10_value} %n %n   &8Senin sıralaman: &8&l#{pos}   '
+
+armorStandSmall: true
+armorStandHoloLines:
+  - '&8▸ &e#{lb_index}'
+  - '&8▸ &f{lb_player}'
+  - '&8▸ &e{lb_value} ...'
+
+guiRows: 1
+guiTitle: ... sıralaması
+
+guiMaterial: '{player_skull}'
+guiDisplay: '&8▸ &e#{lb_index} &f{lb_player}'
+guiLore:
+  - ' &7plugins/uLeaderboards/leaderboards/....yml '
+  - ' &7dosyasından düzenlenebilir.'
+  - ''
+  - '&7...: &f{lb_value} ...'
+  - ''
