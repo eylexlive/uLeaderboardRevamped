@@ -4,7 +4,7 @@ import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 import io.github.eylexlive.leaderboards.leaderboard.display.*;
 import io.github.eylexlive.leaderboards.uLeaderboards;
-import io.github.eylexlive.leaderboards.util.CommaUtil;
+import io.github.eylexlive.leaderboards.util.FormatUtil;
 import io.github.eylexlive.leaderboards.util.config.Config;
 import io.github.eylexlive.leaderboards.util.config.ConfigUtil;
 import io.github.eylexlive.leaderboards.util.inventory.InventoryUI;
@@ -153,7 +153,7 @@ public class LeaderboardManager {
 
         return new LeaderboardStat(
                 name,
-                String.valueOf(comma ? CommaUtil.comma(value) : value)
+                String.valueOf(comma ? FormatUtil.format(value) : value)
         );
     }
 
@@ -164,7 +164,9 @@ public class LeaderboardManager {
         try {
             output= Long.parseLong(outputRaw);
         } catch (NumberFormatException e) {
-            plugin.getLogger().warning("The placeholder " + outputRaw + " is not valid!" + " /papi ecloud download <placeholder>");
+            plugin.getLogger().warning(
+                    "Placeholder is not valid! " + leaderboard.getLeaderboard() + " returned " + outputRaw
+            );
             return;
         }
 
@@ -268,7 +270,7 @@ public class LeaderboardManager {
     }
 
     public void setupManageInventory() {
-        manageInventory = new InventoryUI("uLeaderboards > Sıralama yönetimi", 5);
+        manageInventory = new InventoryUI("Sıralama yönetim menüsü", 5);
         getBoardsFromList().forEach(leaderboard -> {
             final ItemStack itemStack = new ItemStack(Material.DIAMOND);
             itemStack.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 1);

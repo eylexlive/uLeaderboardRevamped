@@ -27,22 +27,22 @@ public class License {
 
     public boolean a(){
         final Type vt = this.l();
-        log(0,"----------------------------------------");
-        log(0, "      uLeaderboards      ");
-        log (0, " ");
+      //  log(0,"----------------------------------------");
+     //   log(0, "      uLeaderboards      ");
+    //    log (0, " ");
         if(vt == Type.VALID){
-            log(1, "    License is valid.    ");
-            log(1, " Thank you for purchasing! ");
-            log (0, " ");
-            log(0, "      uLeaderboards      ");
-            log(0,"----------------------------------------");
+    //        log(1, "    License is valid.    ");
+    //        log(1, " Thank you for purchasing! ");
+     //       log (0, " ");
+     //       log(0, "      uLeaderboards      ");
+     //       log(0,"----------------------------------------");
             return true;
         } else {
-            log(1, "    License is not valid.    ");
-            log(1, " Disabling the plugin! ");
-            log (0, " ");
-            log(0, "      uLeaderboards      ");
-            log(0,"----------------------------------------");
+ //           log(1, "    License is not valid.    ");
+    //        log(1, " Disabling the plugin! ");
+    //        log (0, " ");
+  //          log(0, "      uLeaderboards      ");
+  //          log(0,"----------------------------------------");
 
             Bukkit.getScheduler().cancelTasks(plugin);
             Bukkit.getPluginManager().disablePlugin(plugin);
@@ -83,7 +83,7 @@ public class License {
     }
 
     private String v() {
-        return "http://eylexlive.club/verify.php";
+        return "http://eylexdev.club/verify.php";
     }
 
     private static String enc(String s1, String s2){

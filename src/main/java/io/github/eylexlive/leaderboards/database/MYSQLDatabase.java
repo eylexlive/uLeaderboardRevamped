@@ -12,7 +12,7 @@ public class MYSQLDatabase extends Database {
 
     @Override
     public Database init() {
-        dataSource.setPoolName("uLeaderboardsMYSQLPool");
+        dataSource.setPoolName("uLeaderboardsDBPool");
         dataSource.setJdbcUrl("jdbc:mysql://" +
                         ConfigUtil.getString("mysql.host") +
                         ":" +

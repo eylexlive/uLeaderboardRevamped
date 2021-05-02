@@ -3,12 +3,14 @@
 # made by M & A
 # author: Umut Erarslan#8378
 
-# Your license key
+# Your license key [OLD]
 license: ' '
 
 # Database settings, if set to false, SQLite is used.
+db-url: "jdbc:mysql://%host:%port/%db"
 mysql:
   enabled: false
+  url:
   host: localhost
   port: 3306
   database: uleaderboards
@@ -19,6 +21,20 @@ mysql:
 
 # Leaderboard renew time (Minutes)
 auto-leaderboard-reload-delay: 30 # every 30 minutes
+
+# Stat format
+# Formats: COMMA, WORD
+stat-format:
+  type: COMMA
+  formats:
+    comma: "."
+    words:
+      '1000': k
+      '1000000': M
+      '1000000000': G
+      '1000000000000': T
+      '1000000000000000': P
+      '1000000000000000000': E
 
 # Position message
 position-msg:

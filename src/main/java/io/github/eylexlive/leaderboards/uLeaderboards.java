@@ -11,6 +11,8 @@ import io.github.eylexlive.leaderboards.listener.InventoryListener;
 import io.github.eylexlive.leaderboards.util.License;
 import io.github.eylexlive.leaderboards.util.Placeholders;
 import io.github.eylexlive.leaderboards.util.config.ConfigUtil;
+import io.github.eylexlive.leaderboards.util.license.ipadd.IPAdress;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -31,19 +33,35 @@ public final class uLeaderboards extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        if (instance != null)
+        if (instance != null) {
             throw new IllegalStateException("uLeaderboards cannot be started twice!");
+        }
+
         instance = this;
 
         saveDefaultConfig();
 
-        if (check("a") || check("o") || !check())
+        if (!this.getName().equalsIgnoreCase("uLeaderboards") || this.getName().length() != 13) {
             return;
+        }
 
-        final License license = new License(ConfigUtil.getString("license"));
+        if (check("io.github.eylexlive.leaderboards.util.License","a") || check("io.github.eylexlive.leaderboards.util.License", "o") || !check()) {
+            return;
+        }
+
+        if (check("io.github.eylexlive.leaderboards.util.license.License", "k") || check("io.github.eylexlive.leaderboards.util.license.utils.Utils", "o") ||  check("io.github.eylexlive.leaderboards.util.license.ipadd.IPAdress", "m")) {
+            return;
+        }
+
+    //    final License license = new License(ConfigUtil.getString("license"));
+        final License license = new License("uLeaderboardsActive");
 
         if (!license.a() || license.o() == null || !license.o().equals("§I§I§§§I§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§I§§§§§§§§§§§§§§§§§§§§I§§§§§§§§§§§§§§§§§I"))
             return;
+
+        if (!this.access()) {
+            return;
+        }
 
         getCommand("leaderboard").setExecutor(new LeaderboardCommand(this));
         getCommand("leaderboard").setTabCompleter(new LeaderboardTabCompleter(this));
@@ -102,7 +120,6 @@ public final class uLeaderboards extends JavaPlugin {
         return valid;
     }
 
-
     private synchronized void loadLib(File jar, String str) {
         getLogger().info("[l] Loading " + str + "...");
         try {
@@ -116,13 +133,42 @@ public final class uLeaderboards extends JavaPlugin {
         getLogger().info("[l] " + str + " successfully loaded!");
     }
 
-    protected boolean check(String method) {
+    protected boolean check(String clazz, String method) {
         try {
-            Class.forName("io.github.eylexlive.leaderboards.util.License").getMethod(method, (Class<?>[]) null) ;
+            Class.forName(clazz).getMethod(method, (Class<?>[]) null) ;
         } catch (NoSuchMethodException | SecurityException | ClassNotFoundException e) {
             return true;
         }
         return false;
+    }
+
+    private boolean access() {
+        if (io.github.eylexlive.leaderboards.util.license.License.k().length() != 23 || !IPAdress.m()) {
+            Bukkit.getScheduler().cancelTasks(this);
+            Bukkit.getPluginManager().disablePlugin(this);
+            return false;
+        }
+
+        if (!io.github.eylexlive.leaderboards.util.license.License.has(this.getName())) {
+            Bukkit.getLogger().info("--------------------------------------");
+            Bukkit.getLogger().info("                                      ");
+            Bukkit.getLogger().info("           uLeaderboards           ");
+            Bukkit.getLogger().info("          Lisans gecersiz!       ");
+            Bukkit.getLogger().info("                                      ");
+            Bukkit.getLogger().info("--------------------------------------");
+
+            Bukkit.getScheduler().cancelTasks(this);
+            Bukkit.getPluginManager().disablePlugin(this);
+            return false;
+        } else {
+            Bukkit.getLogger().info("--------------------------------------");
+            Bukkit.getLogger().info("                                      ");
+            Bukkit.getLogger().info("           uLeaderboards           ");
+            Bukkit.getLogger().info("          Lisans gecerli!       ");
+            Bukkit.getLogger().info("                                      ");
+            Bukkit.getLogger().info("--------------------------------------");
+        }
+        return true;
     }
 
     protected boolean check() {

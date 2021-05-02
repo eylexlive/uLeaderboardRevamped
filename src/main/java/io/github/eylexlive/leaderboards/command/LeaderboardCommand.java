@@ -59,7 +59,7 @@ public class LeaderboardCommand implements CommandExecutor {
         this.playerMsg = new String[]{
                 "",
                 "   §8▸ §e/ulb book §a<tür> §8| §7Sıralamayı gösterir!",
-                "   §8▸ §e/ulb guş §a<tür> §8| §7Sıralamayı gösterir!",
+                "   §8▸ §e/ulb gui §a<tür> §8| §7Sıralamayı gösterir!",
                 "",
                 "            §f§ouLeaderboards §f§Lby Umut Erarslan#8378.",
                 "",
@@ -112,7 +112,18 @@ public class LeaderboardCommand implements CommandExecutor {
                 }
 
                 final GuiDisplay gui = new GuiDisplay();
-                Bukkit.getScheduler().runTask(plugin, () -> player.openInventory(gui.getGui(leaderboard).getCurrentPage()));
+           /*     if (gui.getGui(leaderboard) == null) {
+                    CompletableFuture.runAsync(() -> gui.setup(leaderboard)).whenComplete((x, y) -> player.openInventory(gui.getGui(leaderboard).getCurrentPage()));
+                } else {
+                    CompletableFuture.runAsync(() -> player.openInventory(gui.getGui(leaderboard).getCurrentPage()));
+                }
+
+            */
+// works fine
+                Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+                    final InventoryUI ui = gui.getGui(leaderboard);
+                    player.openInventory(ui.getCurrentPage());;
+                });
             } else if (args[0].equalsIgnoreCase("book")) {
                 if (leaderboard == null) {
                     player.sendMessage(this.invalidLeaderboard);

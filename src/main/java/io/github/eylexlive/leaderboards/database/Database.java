@@ -74,5 +74,4 @@ public abstract class Database {
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
-
 }
